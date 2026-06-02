@@ -35,49 +35,138 @@
             margin-top: 1.8rem;
             margin-bottom: 0.5rem;
         }
+        h3 {
+            font-size: 1rem;
+            margin-top: 1.2rem;
+            margin-bottom: 0.4rem;
+        }
         p { margin-bottom: 0.8rem; }
         ul {
             margin: 0.5rem 0 1rem 1.5rem;
         }
         li { margin-bottom: 0.3rem; }
         a { color: #0066cc; }
+        .callout {
+            background: #f0f7ff;
+            border-left: 3px solid #0066cc;
+            padding: 0.75rem 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Privacy Policy</h1>
-        <p class="updated">Last updated: March 31, 2026</p>
+        <p class="updated">Last updated: June 2, 2026</p>
 
         <h2>Overview</h2>
-        <p>The Grind ("the App") is a challenge tracker for iOS. Your privacy is simple: <strong>we don't collect your data.</strong></p>
+        <p>The Grind ("the App") is a challenge tracker for iOS. Most of your data stays on your device. A small amount of usage and crash data is collected anonymously to help us improve the App. If you choose to use <strong>Grind Pro</strong> features that involve friends (1:1 and group challenges), some additional data is stored on our servers so your friends' apps can see your check-in status.</p>
 
-        <h2>Data Collection</h2>
-        <p>The App does <strong>not</strong> collect, store, or transmit any personal information. Specifically:</p>
+        <div class="callout">
+            <strong>Quick summary:</strong> Solo use stays on your device. Anonymous usage and crash data is sent to Google Firebase. Grind Pro friend features require a Sign in with Apple account and store a small amount of data per user. No ads. No tracking across apps. No data sold to anyone.
+        </div>
+
+        <h2>1. Local data (what stays on your device)</h2>
+        <p>The following is stored only on your device using Apple's SwiftData framework and the local file system. It is not transmitted off the device by the App:</p>
         <ul>
-            <li>No account or login required</li>
-            <li>No analytics or tracking SDKs</li>
-            <li>No advertising</li>
-            <li>No cookies or device fingerprinting</li>
-            <li>No data shared with third parties</li>
+            <li>Your challenges, tasks, daily logs, and streaks</li>
+            <li>Progress photos and the camera/photo library access you grant</li>
+            <li>Theme, notification times, and other settings</li>
+            <li>HealthKit data the App reads (workouts, steps) — see Section 4</li>
+        </ul>
+        <p>If you delete the App from your device, this local data is removed by iOS.</p>
+
+        <h2>2. Anonymous usage and crash data (Firebase)</h2>
+        <p>The App uses Google Firebase to collect anonymous usage and crash data so we can understand which features work, find bugs, and prioritize improvements. We do not use this data to identify you.</p>
+
+        <h3>2a. Firebase Analytics</h3>
+        <ul>
+            <li><strong>IDFA is not collected.</strong> The App does not use Apple's advertising identifier, so you will not be asked to allow tracking (no ATT prompt).</li>
+            <li>Firebase Analytics records anonymous events such as "challenge started," "day completed," and "theme changed," along with non-identifying parameters (e.g., which mode you picked, what day number you completed).</li>
+            <li>Firebase automatically logs anonymous app-usage events like first open, session start, and screen views.</li>
+            <li>This data is aggregated by Google and visible to us only at the cohort level. We cannot single out an individual user from Firebase Analytics alone.</li>
         </ul>
 
-        <h2>Data Storage</h2>
-        <p>All data (challenge progress, settings, and photos) is stored <strong>locally on your device</strong>. Nothing leaves your phone.</p>
+        <h3>2b. Firebase Crashlytics</h3>
+        <ul>
+            <li>If the App crashes, an anonymized crash report (stack trace, device model, OS version, app version) is sent to Firebase Crashlytics.</li>
+            <li>Crash reports do not include your challenge data, photos, names, or anything else from Section 1.</li>
+        </ul>
 
-        <h2>Photos</h2>
-        <p>If you use the daily progress photo feature, photos are saved to your device only. They are never uploaded to any server or shared without your explicit action.</p>
+        <h2>3. Grind Pro and friend features (only if you opt in)</h2>
+        <p>If you use Grind Pro's friend challenges (1:1 or group), additional data is stored on our servers (Google Cloud Firestore, part of Firebase). This applies only after you sign in to use these features. Free, solo use does not trigger any of this.</p>
 
-        <h2>Apple Health</h2>
-        <p>If you grant permission, the App reads workout and step count data from Apple Health (HealthKit). The App does not write any data to Apple Health. This data stays on your device and is governed by Apple's privacy policies. We do not access, collect, or store any HealthKit data on external servers.</p>
+        <h3>3a. Sign in with Apple</h3>
+        <ul>
+            <li>We use Apple's Sign in with Apple for friend features.</li>
+            <li>Apple provides us with: a stable Apple user identifier, an email address (which you can choose to have Apple relay so we never see your real address), and the name you choose to share on first sign-in.</li>
+            <li>We do not receive your Apple ID password or any other Apple account details.</li>
+        </ul>
 
-        <h2>Children's Privacy</h2>
-        <p>The App does not knowingly collect information from children under 13.</p>
+        <h3>3b. Friend graph</h3>
+        <ul>
+            <li>Your list of friends and pending friend requests is stored in our Firestore database, indexed by your Sign in with Apple identifier.</li>
+            <li>Friend connections require both sides to accept.</li>
+            <li>You can remove a friend or block a user at any time. Blocking hides their content from you immediately and prevents them from seeing yours.</li>
+        </ul>
 
-        <h2>Changes</h2>
-        <p>If this policy changes, we will update this page with a new date.</p>
+        <h3>3c. Shared challenge check-ins (the privacy boundary)</h3>
+        <ul>
+            <li>When you share a challenge with a friend (1:1 or group), your friends' apps can see your daily check-in <strong>status only</strong>: complete, partially complete, or missed.</li>
+            <li>Your friends <strong>cannot</strong> see your individual task names, water counts, reading minutes, photos, journal notes, or any other detail from Section 1.</li>
+            <li>Reactions you send (👏 🔥 💪) are visible to the friend who received them and to other members of any shared group.</li>
+        </ul>
 
-        <h2>Contact</h2>
-        <p>Questions? Reach out at: <a href="mailto:thelosttechie23@gmail.com">thelosttechie23@gmail.com</a></p>
+        <h3>3d. Push notifications</h3>
+        <ul>
+            <li>If you enable push notifications, the App registers a device push token with Firebase Cloud Messaging so we can deliver notifications about your own challenge and your friends' activity.</li>
+            <li>Push tokens are stored against your user identifier and rotated by iOS over time. They are not shared with anyone other than Apple's push service.</li>
+        </ul>
+
+        <h3>3e. Abuse reports</h3>
+        <ul>
+            <li>If you report another user for abuse, harassment, spam, or inappropriate behavior, we record the reporter's user identifier, the reported user's identifier, the reason, and the context (which challenge, which check-in).</li>
+            <li>Report data is retained for moderation purposes for up to 1 year, then deleted.</li>
+        </ul>
+
+        <h3>3f. Account deletion</h3>
+        <ul>
+            <li>You can delete your Grind Pro account from <em>Settings → Account → Delete Account</em>.</li>
+            <li>When you delete your account, we remove your Firestore user document, friend graph, shared challenge memberships, reactions, and push token within 30 days.</li>
+            <li>Reports filed by or against you may be retained for up to 1 year for safety purposes, in anonymized form.</li>
+            <li>Local data on your device is not affected by account deletion (you can also delete the App itself for that).</li>
+        </ul>
+
+        <h2>4. Apple Health (HealthKit)</h2>
+        <p>If you grant permission, the App reads workout and step count data from Apple Health (HealthKit) to auto-complete workout tasks. The App does not write any data to Apple Health. HealthKit data stays on your device and is governed by Apple's privacy policies. We do not access, collect, or store any HealthKit data on external servers.</p>
+
+        <h2>5. Subprocessors</h2>
+        <p>We use the following service providers to operate the App. They process data on our behalf and are not permitted to use it for their own purposes:</p>
+        <ul>
+            <li><strong>Google (Firebase)</strong> — Firebase Authentication, Cloud Firestore, Firebase Cloud Messaging, Firebase Analytics, Firebase Crashlytics, and Google Cloud Functions. Data is stored in Google Cloud regions in the United States.</li>
+            <li><strong>Apple</strong> — Sign in with Apple, Apple Push Notification service, App Store / TestFlight purchase records, HealthKit.</li>
+        </ul>
+        <p>We do not share, sell, or rent your data to advertisers, data brokers, or any other third party.</p>
+
+        <h2>6. In-app purchases</h2>
+        <p>Grind Pro is purchased through Apple's In-App Purchase system. Apple handles the transaction. We receive a record from Apple that your Apple ID has entitled the Pro features; we do not receive your payment card details.</p>
+
+        <h2>7. Photos</h2>
+        <p>If you use the daily progress photo feature, photos are saved to your device only. They are never uploaded to our servers and are not shared with your friends through the App.</p>
+
+        <h2>8. Children's privacy</h2>
+        <p>The App is not directed at children under 13. We do not knowingly collect information from children under 13. If you believe a child has provided us with information, please contact us and we will remove it.</p>
+
+        <h2>9. Your rights</h2>
+        <p>Depending on where you live, you may have the right to: access the personal data we hold about you, correct it, request deletion, or restrict how it is used. To exercise any of these rights, contact us at the email below. For Grind Pro account holders, account deletion is also available directly in <em>Settings → Account</em>.</p>
+
+        <h2>10. Changes</h2>
+        <p>If this policy changes, we will update this page with a new date. Material changes (such as new categories of data being collected) will be communicated within the App as well.</p>
+
+        <h2>11. Contact</h2>
+        <p>Questions, requests, or abuse reports? Reach out at: <a href="mailto:thelosttechie23@gmail.com">thelosttechie23@gmail.com</a></p>
     </div>
 </body>
 </html>
